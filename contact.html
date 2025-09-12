@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Consistency Flow</title>
+    <meta name="description" content="Contact Consistency Flow to start building your lasting habits. Reach out to our team directly or fill out our secure contact form.">
+    <meta property="og:title" content="Contact Us | Consistency Flow">
+    <meta property="og:description" content="Reach out to start building your lasting habits. Contact us directly or use our secure form.">
+    <meta property="og:image" content="https://consistencyflow.com/assets/images/FlowLogoShape.png">
+    <meta property="og:url" content="https://consistencyflow.com/contact.html">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/png" href="assets/images/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Google reCAPTCHA script -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YJRK9ZBBG3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YJRK9ZBBG3');
+</script>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo-link">
+                <img src="assets/images/FlowLogoShape.png" alt="Consistency Flow Logo" class="logo-image">
+                <h1 class="logo">Consistency Flow</h1>
+            </a>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="program.html" class="nav-link">Our Program</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section hero-contact">
+        <div class="hero-aura"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h2 class="hero-headline">Let's Talk About Your Flow</h2>
+                <p class="hero-subheadline">Reach out to start building your lasting habits.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <main class="page-section contact-section">
+        <div class="container">
+            <div class="contact-info">
+                <p>We're here to answer your questions and help you take the first step toward lasting success. Fill out the form below or reach us directly.</p>
+                <p>Email: <a href="mailto:contact@consistencyflow.com">consistencyflow@gmail.com</a></p>
+                <p>Phone: <a href="tel:+18001234567">1-609-435-7364</a></p>
+            </div>
+
+            <form action="https://formspree.io/f/xrbajkjr" method="post" class="contact-form">
+                <input type="text" name="name" placeholder="Your Name" required maxlength="100">
+                <input type="email" name="email" placeholder="Your Email" required maxlength="254">
+                <textarea name="message" placeholder="Your Message" required minlength="20" maxlength="5000"></textarea>
+
+                <!-- Honeypot Field -->
+                <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
+
+                <!-- Google reCAPTCHA -->
+                <div class="g-recaptcha" data-sitekey="6LeGFsQrAAAAAN2HiUvNbZtPwMtVQdFEe11tPAKz"></div>
+
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+	     <!-- Success Message -->
+            <div id="contact-success-message" style="display: none;">
+                <p>Thank you! Your message has been sent. We'll be in touch soon.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Consistency Flow. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/company/consistencyflow" class="social-link">LinkedIn</a>
+                <a href="https://medium.com/@consistencyflow" class="social-link">Medium</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const contactForm = document.querySelector('.contact-form');
+        const contactSuccessMessage = document.getElementById('contact-success-message');
+
+        contactForm.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const form = event.target;
+            const data = new FormData(form);
+            const action = form.action;
+            
+            try {
+                const response = await fetch(action, {
+                    method: 'POST',
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    form.style.display = 'none';
+                    contactSuccessMessage.style.display = 'block';
+                } else {
+                    alert('Oops! There was a problem submitting your form.');
+                }
+            } catch (error) {
+                alert('Oops! There was a problem submitting your form.');
+            }
+        });
+    </script>
+</body>
+</html>
