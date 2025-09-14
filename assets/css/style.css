@@ -511,3 +511,99 @@ blockquote {
     color: #E3C279;
     margin-top: 0;
 }
+/* Hamburger Menu Styles */
+
+/* Hide the hamburger menu button by default on larger screens */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    padding: 10px;
+    z-index: 1001; /* Ensure it's on top of other elements */
+}
+
+/* Hamburger icon styling */
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #475066;
+    border-radius: 3px;
+    transition: all 0.3s ease-in-out;
+}
+
+.hamburger::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+}
+
+.hamburger::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .header .container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Show hamburger menu on small screens */
+    .menu-toggle {
+        display: block;
+    }
+    
+    /* Hide the navigation links by default on small screens */
+    .nav-links-container {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px; /* Adjust as needed */
+        left: 0;
+        background-color: #1a1a1a;
+        padding: 20px 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Show the navigation links when the menu is active */
+    .nav-links-container.active {
+        display: flex;
+    }
+
+    .nav-link {
+        color: #FFFFFF;
+        text-align: center;
+        padding: 15px 0;
+        margin: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-link:last-child {
+        border-bottom: none;
+    }
+
+    /* Animate hamburger to an 'X' */
+    .menu-toggle.active .hamburger {
+        transform: rotate(45deg);
+    }
+
+    .menu-toggle.active .hamburger::before {
+        top: 0;
+        transform: rotate(-90deg);
+    }
+
+    .menu-toggle.active .hamburger::after {
+        top: 0;
+        transform: rotate(-90deg);
+        opacity: 0;
+    }
+}
+
